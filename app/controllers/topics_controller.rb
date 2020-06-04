@@ -1,6 +1,7 @@
 class TopicsController < ApplicationController
   def index
     @topics = Topic.all
+    new
   end
 
   def show
@@ -8,7 +9,7 @@ class TopicsController < ApplicationController
   end
 
   def new
-      @topic = Topic.new
+    @topic = Topic.new
   end
 
   def edit
