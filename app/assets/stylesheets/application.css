@@ -13,3 +13,14 @@
  *= require_tree .
  *= require_self
  */
+ body {
+ 	margin: 4rem auto;
+ 	max-width: 650px;
+ 	padding: 0 1rem;
+ 	font-size: 1.4rem;
+ 	font-family: "Liberation Sans", Arial, sans-serif;
+ }
+
+ h1, h2, h3, h4, h5, h6 {
+ 	font-family: FreeSans, Arial, sans-serif;
+ }

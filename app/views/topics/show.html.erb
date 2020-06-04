@@ -13,7 +13,7 @@
 
 <hr/>
 <h2>Add a reply:</h2>
-<%= render 'replies/form' %>
+<%= render 'replies/form', var: [ @topic, @topic.replies.build ] %>
 
 <%= link_to 'Edit', edit_topic_path(@topic) %>
 <%= link_to 'Destroy', topic_path(@topic),
