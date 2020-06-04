@@ -1,0 +1,19 @@
+<hr/>
+<p>
+  <strong>User:</strong>
+  <%= reply.user %>
+</p>
+<p>
+  <strong>Message:</strong>
+  <%= reply.body %>
+</p>
+
+<p>
+  <%= link_to 'Edit', edit_topic_reply_path(reply.topic, reply) %>
+</p>
+
+<p>
+  <%= link_to 'Destroy', [reply.topic, reply],
+               method: :delete,
+               data: { confirm: 'Are you sure?' } %>
+</p>

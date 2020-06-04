@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_04_000437) do
+ActiveRecord::Schema.define(version: 2020_06_04_094934) do
+
+  create_table "replies", force: :cascade do |t|
+    t.string "user"
+    t.text "body"
+    t.integer "topic_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["topic_id"], name: "index_replies_on_topic_id"
+  end
 
   create_table "threads", force: :cascade do |t|
     t.string "title"
@@ -26,4 +35,5 @@ ActiveRecord::Schema.define(version: 2020_06_04_000437) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "replies", "topics"
 end

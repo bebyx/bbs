@@ -8,6 +8,13 @@
   <%= @topic.message %>
 </p>
 
+<h2>Replies</h2>
+<%= render @topic.replies %>
+
+<hr/>
+<h2>Add a reply:</h2>
+<%= render 'replies/form' %>
+
 <%= link_to 'Edit', edit_topic_path(@topic) %>
 <%= link_to 'Destroy', topic_path(@topic),
         method: :delete,
