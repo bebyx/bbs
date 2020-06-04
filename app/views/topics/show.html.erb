@@ -1,0 +1,15 @@
+<p>
+  <strong>Title:</strong>
+  <%= @topic.title %>
+</p>
+
+<p>
+  <strong>Message:</strong>
+  <%= @topic.message %>
+</p>
+
+<%= link_to 'Edit', edit_topic_path(@topic) %>
+<%= link_to 'Destroy', topic_path(@topic),
+        method: :delete,
+        data: { confirm: 'Are you sure?' } %>
+<%= link_to 'Всі треди', topics_path %>
