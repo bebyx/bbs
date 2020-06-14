@@ -13,7 +13,7 @@
 
   <% @topics.each do |topic| %>
     <tr>
-      <td><%= topic.title %></td>
+      <td><%= topic.title %> | <%= topic.created_at.strftime('%B %e, %Y') %></td>
       <td><%= markdown(topic.message) %></td>
       <td><%= link_to 'Show', topic_path(topic) %></td>
       <td><%= link_to 'Edit', edit_topic_path(topic) %></td>

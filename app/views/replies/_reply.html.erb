@@ -1,7 +1,8 @@
 <hr/>
 <p>
   <strong>User:</strong>
-  <%= reply.user %>
+  <%= reply.user %> | <b>Date:</b>
+  <%= reply.created_at.strftime('%B %e, %Y') %>
 </p>
 <p>
   <strong>Message:</strong>
