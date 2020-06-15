@@ -1,6 +1,6 @@
 <h1>Edit Reply</h1>
 
-<%= form_with(model: [@topic, @reply], url: edit_board_topic_reply_path, local: true) do |form| %>
+<%= form_with(model: [@topic, @reply], url: board_topic_reply_path, local: true) do |form| %>
  <p>
    <%= form.label :user %><br>
    <%= form.text_field :user %>
