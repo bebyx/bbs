@@ -1,3 +1,17 @@
 <h1>Edit Reply</h1>
 
-<%= render 'form', var: [@topic, @reply] %>
+<%= form_with(model: [@topic, @reply], url: edit_board_topic_reply_path, local: true) do |form| %>
+ <p>
+   <%= form.label :user %><br>
+   <%= form.text_field :user %>
+ </p>
+ <p>
+   <%= form.label :body %><br>
+   <%= form.text_area :body %>
+ </p>
+ <p>
+   <%= form.submit %>
+ </p>
+<% end %>
+
+<%= link_to 'Back', board_topic_path(@topic.board_id, @topic) %>

@@ -1,5 +1,5 @@
 <h1>Edit Topic</h1>
 
-<%= render 'form' %>
+<%= render 'form', var: [@board, @topic] %>
 
-<%= link_to 'Back', topics_path %>
+<%= link_to 'Back', board_path(@board) %>

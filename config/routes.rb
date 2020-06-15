@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
 
-  resources :topics do
-    resources :replies
+  resources :boards do
+    resources :topics do
+      resources :replies
+    end
   end
 
   root 'welcome#index'

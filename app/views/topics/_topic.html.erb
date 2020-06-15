@@ -1,0 +1,26 @@
+<% if (!topic.title.nil? && !topic.message.nil?) %>
+<hr/>
+<p>
+  <strong>Topic:</strong>
+  <%= topic.title %>
+</p>
+<p>
+  <strong>Message:</strong>
+  <%= markdown(topic.message) %>
+</p>
+
+<p>
+  <%= link_to 'Show', board_topic_path(topic.board, topic) %>
+</p>
+
+<p>
+  <%= link_to 'Edit', edit_board_topic_path(topic.board, topic) %>
+</p>
+
+<p>
+  <%= link_to 'Destroy', [topic.board, topic],
+               method: :delete,
+               data: { confirm: 'Are you sure?' } %>
+</p>
+
+<% end %>

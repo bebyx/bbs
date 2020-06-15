@@ -10,7 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_04_094934) do
+ActiveRecord::Schema.define(version: 2020_06_14_192440) do
+
+  create_table "boards", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "replies", force: :cascade do |t|
     t.string "user"
@@ -21,19 +28,15 @@ ActiveRecord::Schema.define(version: 2020_06_04_094934) do
     t.index ["topic_id"], name: "index_replies_on_topic_id"
   end
 
-  create_table "threads", force: :cascade do |t|
-    t.string "title"
-    t.text "message"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "topics", force: :cascade do |t|
     t.string "title"
     t.text "message"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "board_id", null: false
+    t.index ["board_id"], name: "index_topics_on_board_id"
   end
 
   add_foreign_key "replies", "topics"
+  add_foreign_key "topics", "boards"
 end

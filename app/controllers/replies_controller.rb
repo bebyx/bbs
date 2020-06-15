@@ -3,7 +3,7 @@ class RepliesController < ApplicationController
   def create
     @topic = Topic.find(params[:topic_id])
     @reply = @topic.replies.create(reply_params)
-    redirect_to topic_path(@topic)
+    redirect_to board_topic_path(@topic.board_id, @topic)
   end
 
   def edit
@@ -15,7 +15,7 @@ class RepliesController < ApplicationController
     @topic = Topic.find(params[:topic_id])
     @reply = Reply.find(params[:id])
     if @reply.update(reply_params)
-      redirect_to @topic
+      redirect_to board_topic_path(@topic.board_id, @topic)
     else
       render 'edit'
     end
@@ -25,7 +25,7 @@ class RepliesController < ApplicationController
     @topic = Topic.find(params[:topic_id])
     @reply = @topic.replies.find(params[:id])
     @reply.destroy
-    redirect_to topic_path(@topic)
+    redirect_to board_topic_path(@topic.board_id, @topic)
   end
 
   private

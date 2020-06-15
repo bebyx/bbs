@@ -1,46 +1,36 @@
 class TopicsController < ApplicationController
-  def index
-    @topics = Topic.all
-    new
-  end
 
   def show
+    @board = Board.find(params[:board_id])
     @topic = Topic.find(params[:id])
   end
 
-  def new
-    @topic = Topic.new
-  end
-
   def edit
+    @board = Board.find(params[:board_id])
     @topic = Topic.find(params[:id])
   end
 
   def create
-    @topic = Topic.new(topic_params)
-
-    if @topic.save
-      redirect_to @topic
-    else
-      render 'new'
-    end
+    @board = Board.find(params[:board_id])
+    @topic = @board.topics.create(topic_params)
+    redirect_to board_path(@board)
   end
 
   def update
+    @board = Board.find(params[:board_id])
     @topic = Topic.find(params[:id])
-
     if @topic.update(topic_params)
-      redirect_to @topic
+      redirect_to board_topic_path(@board, @topic)
     else
       render 'edit'
     end
   end
 
   def destroy
-    @topic = Topic.find(params[:id])
+    @board = Board.find(params[:board_id])
+    @topic = @board.topics.find(params[:id])
     @topic.destroy
-
-    redirect_to topics_path
+    redirect_to board_path(@board)
   end
 
   private

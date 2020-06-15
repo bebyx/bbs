@@ -1,0 +1,17 @@
+<p>
+  <strong>Name:</strong>
+  <%= @board.name %>
+  | <b>Date:</b> <%= @board.created_at.strftime('%B %e, %Y') %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @board.description %>
+</p>
+
+<%= render 'topics/form', var: [ @board, @board.topics.build ] %>
+
+<%= render @board.topics %>
+
+<hr/>
+<%= link_to 'Всі Дошки', boards_path %>

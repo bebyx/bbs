@@ -14,10 +14,11 @@
 
 <hr/>
 <h2>Add a reply:</h2>
-<%= render 'replies/form', var: [ @topic, @topic.replies.build ] %>
+<%= render 'form', var: [@board, @topic, @topic.replies.build] %>
 
-<%= link_to 'Edit', edit_topic_path(@topic) %>
-<%= link_to 'Destroy', topic_path(@topic),
+
+<%= link_to 'Edit', edit_board_topic_path(@topic.board_id) %>
+<%= link_to 'Destroy', board_topic_path(@topic.board_id),
         method: :delete,
         data: { confirm: 'Are you sure?' } %>
-<%= link_to 'Всі треди', topics_path %>
+<%= link_to 'Всі треди', board_path(@topic.board_id) %>
