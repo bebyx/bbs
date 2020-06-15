@@ -14,7 +14,7 @@
 
 <hr/>
 <h2>Add a reply:</h2>
-<%= render 'form', var: [@board, @topic, @topic.replies.build] %>
+<%= render 'replies/form', var: [@board, @topic, @topic.replies.build] %>
 
 
 <%= link_to 'Edit', edit_board_topic_path(@topic.board_id) %>
