@@ -1,4 +1,4 @@
 class Board < ApplicationRecord
   has_many :topics, dependent: :destroy
-  validates :name, length: { minimum: 1 }
+  validates :name, length: { minimum: 1 }, uniqueness: true
 end
