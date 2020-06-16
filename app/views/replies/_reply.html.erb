@@ -11,7 +11,7 @@
 
 <p>
   <p>
-    <%= link_to 'Edit', edit_board_topic_reply_path(reply.topic.board, reply.topic, reply) %>
+    <%= link_to 'Edit', edit_board_topic_reply_path(reply.topic.board.name, reply.topic, reply) %>
   </p>
   <%= link_to 'Destroy', [reply.topic.board, reply.topic, reply],
                method: :delete,

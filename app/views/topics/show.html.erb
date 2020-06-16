@@ -17,8 +17,8 @@
 <%= render 'replies/form', var: [@board, @topic, @topic.replies.build] %>
 
 
-<%= link_to 'Edit', edit_board_topic_path(@topic.board_id) %>
-<%= link_to 'Destroy', board_topic_path(@topic.board_id),
+<%= link_to 'Edit', edit_board_topic_path(@board.name) %>
+<%= link_to 'Destroy', board_topic_path(@board.name),
         method: :delete,
         data: { confirm: 'Are you sure?' } %>
-<%= link_to 'Всі треди', board_path(@topic.board_id) %>
+<%= link_to 'Всі треди', board_path(@board.name) %>
