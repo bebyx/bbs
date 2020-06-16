@@ -4,12 +4,20 @@
     <title>Bbs</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+    <nav>
+      <% @menu_boards.each do |board| %>
+      <ul style="list-style-type:none;display:inline;margin:0;padding:0;">
+        <li style="display:inline;"> /<%= link_to board.name, board_path(board) %>/</li>
+      </ul>
+      <% end %>
+    </nav>
     <%= yield %>
   </body>
 </html>
