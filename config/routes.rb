@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
 
   resources :boards do
-    resources :topics do
-      resources :replies
+    resources :topics, except: [:index, :new] do
+      resources :replies, except: [:index, :new, :show]
     end
   end
 
