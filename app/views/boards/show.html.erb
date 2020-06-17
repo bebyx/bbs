@@ -1,7 +1,7 @@
 <p>
   <strong>Name:</strong>
   <%= @board.name %>
-  | <b>Date:</b> <%= @board.created_at.strftime('%B %e, %Y') %>
+  | <b>Date:</b> <%= @board.created_at.strftime('%H:%M — %B %e, %Y') %>
 </p>
 
 <p>
@@ -11,7 +11,8 @@
 
 <%= render 'topics/form', var: [ @board, @board.topics.build ] %>
 
-<%= render @board.topics %>
+<%= render @board.topics.includes(:replies).order(
+          'replies.created_at DESC, topics.created_at DESC') %>
 
 <hr/>
 <%= link_to 'Всі Дошки', boards_path %>

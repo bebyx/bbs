@@ -2,7 +2,8 @@
 <p>
   <strong>User:</strong>
   <%= reply.user %> | <b>Date:</b>
-  <%= reply.created_at.strftime('%B %e, %Y') %>
+  <%= reply.created_at.strftime('%H:%M — %B %e, %Y') %>
+  | Reply #<%=  %>
 </p>
 <p>
   <strong>Message:</strong>

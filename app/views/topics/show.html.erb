@@ -2,6 +2,8 @@
   <strong>Title:</strong>
   <%= @topic.title %>
   | <b>Date:</b> <%= @topic.created_at.strftime('%B %e, %Y') %>
+  | <b>Time:</b> <%= @topic.created_at.strftime('%H:%M') %>
+  | Topic #<%= @topic.id %> | Replies: <%= @topic.replies.count %>
 </p>
 
 <p>

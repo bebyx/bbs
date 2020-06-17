@@ -2,7 +2,8 @@
 <hr/>
 <p>
   <strong>Topic:</strong>
-  <%= topic.title %>
+  <%= topic.title %> | Date: <%= topic.created_at.strftime('%H:%M — %B %e, %Y') %>
+  | Topic #<%= topic.id %> | Replies: <%= topic.replies.count %>
 </p>
 <p>
   <strong>Message:</strong>
