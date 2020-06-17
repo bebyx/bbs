@@ -11,8 +11,8 @@
 
 <%= render 'topics/form', var: [ @board, @board.topics.build ] %>
 
-<%= render @board.topics.includes(:replies).order(
-          'replies.created_at DESC, topics.created_at DESC') %>
+<%= render @board.topics.left_joins(:replies).group('topics.id').order(
+          'IFNULL(MAX(replies.created_at), topics.created_at) DESC') %>
 
 <hr/>
 <%= link_to 'Всі Дошки', boards_path %>
