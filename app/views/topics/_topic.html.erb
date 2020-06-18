@@ -7,12 +7,23 @@
 </p>
   <%= markdown(topic.message) %>
 
+
+<% if !topic.replies.empty? %>
 <p>
-  Last two replies:
+  Last replies:
 </p>
 
-<%= render topic.replies.limit(2) %>
+  <% if (topic.replies.count == 1) %>
+    <%= render topic.replies.order('created_at DESC').limit(1) %>
 
+  <% else %>
+    <%= render topic.replies.order('created_at DESC').limit(1).offset(1) +
+               topic.replies.order('created_at DESC').limit(1)%>
+  <% end %>
+
+<% end %>
+
+<hr/>
 <%= render 'replies/form', var: [@board, topic, topic.replies.build] %>
 
 <p>

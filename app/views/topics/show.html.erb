@@ -25,8 +25,9 @@
 <%= link_to 'Всі треди', board_path(@board.name) %>
 
 <script>
-function replyFocus(id) {
-  let x = document.getElementById("form");
+function replyFocus(id, topic_id) {
+  topic_id_read = "t" + topic_id.toString();
+  let x = document.getElementById(topic_id_read);
   if (x.value) {
     x.value = x.value + "\n\n#" + id + "\n\n"}
   else {
