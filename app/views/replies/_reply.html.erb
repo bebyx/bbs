@@ -3,18 +3,19 @@
   <strong>User:</strong>
   <%= reply.user %> | <b>Date:</b>
   <%= reply.created_at.strftime('%H:%M — %B %e, %Y') %>
-  | Reply <%= link_to "##{reply.topic.replies.index(reply) + 1}",
-  "##{reply.topic.replies.index(reply) + 1}" %>
+  | Reply <a href="" onclick="replyFocus(<%= reply.topic.replies.index(reply) + 1 %>); return false"><%= 
+  "##{reply.topic.replies.index(reply) + 1}" %></a>
 </p>
 <p>
   <%= markdown(reply.body) %>
 </p>
 
+
 <p>
-  <p>
-    <%= link_to 'Edit', edit_board_topic_reply_path(reply.topic.board.name, reply.topic, reply) %>
-  </p>
-  <%= link_to 'Destroy', [reply.topic.board, reply.topic, reply],
-               method: :delete,
-               data: { confirm: 'Are you sure?' } %>
+  <%= link_to 'Edit', edit_board_topic_reply_path(reply.topic.board.name, reply.topic, reply) %>
+</p>
+<p>
+<%= link_to 'Destroy', [reply.topic.board, reply.topic, reply],
+             method: :delete,
+             data: { confirm: 'Are you sure?' } %>
 </p>
