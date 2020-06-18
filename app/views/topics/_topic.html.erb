@@ -8,7 +8,7 @@
   <%= markdown(topic.message) %>
 
 <p>
-  Last three replies:
+  Last two replies:
 </p>
 
 <%= render topic.replies.limit(2) %>
