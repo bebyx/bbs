@@ -20,7 +20,7 @@ class BbsRender < Redcarpet::Render::HTML
   end
 
   def header(text, level)
-    level = "#"
+    level = "#" * level
     "#{level + " " + text}"
   end
 end
