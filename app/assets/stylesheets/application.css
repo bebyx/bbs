@@ -29,3 +29,12 @@
    font-family: inherit;
    font-size: inherit;
 }
+
+.spoiler {
+  color: gray;
+  background-color: gray;
+}
+
+.spoiler:hover {
+  color: white;
+}

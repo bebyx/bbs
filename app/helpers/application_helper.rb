@@ -4,10 +4,11 @@ module ApplicationHelper
       no_links: true, no_images: true,
       no_styles: true, escape_html: true,
       prettify: true),
-      autolink: false, strikethrough: true,
-      underline: true, superscript: true,
-      no_intra_emphasis: true, tables: false,
-      quote: false, disable_indented_code_blocks: true
+      autolink: false, space_after_headers: true,
+      strikethrough: true, underline: true,
+      superscript: true, no_intra_emphasis: true,
+      tables: false, quote: false,
+      disable_indented_code_blocks: true
     ).render(text)
   end
 end
@@ -21,5 +22,10 @@ class BbsRender < Redcarpet::Render::HTML
   def header(text, level)
     level = "#" * level
     "<p>#{level + " " + text}</p>"
+  end
+
+  def paragraph(text)
+    text = text.gsub(/%%(.+)%%/) {|spoiler| spoiler.tr('%%', '').insert(0, "<span class='spoiler'>").<<"</span>"}
+    %(<p>#{text}</p>)
   end
 end
