@@ -4,7 +4,7 @@ module ApplicationHelper
       no_links: true, no_images: true,
       no_styles: true, escape_html: true,
       prettify: true),
-      autolink: false, space_after_headers: false,
+      autolink: false, space_after_headers: true,
       strikethrough: true, underline: true,
       superscript: true, no_intra_emphasis: true,
       tables: false, quote: false,
@@ -21,13 +21,8 @@ class BbsRender < Redcarpet::Render::HTML
   end
 
   def header(text, level)
-    if (Integer(text) rescue false)
-      level = text
-      "<a href='\##{level}'>\##{text}</a>"
-    else
       level = "#" * level
-      "<p>#{level + text}</p>"
-    end
+      "<p>#{level + " " + text}</p>"
   end
 
   def spoiler(text)
