@@ -5,9 +5,15 @@
   <%= topic.title %> | Date: <%= topic.created_at.strftime('%H:%M — %B %e, %Y') %>
   | Topic #<%= topic.id %> | Replies: <%= topic.replies.count %>
 </p>
-<p>
   <%= markdown(topic.message) %>
+
+<p>
+  Last three replies:
 </p>
+
+<%= render topic.replies.limit(2) %>
+
+<%= render 'replies/form', var: [@board, topic, topic.replies.build] %>
 
 <p>
   <%= link_to 'Show', board_topic_path(topic.board, topic) %>

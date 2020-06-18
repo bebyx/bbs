@@ -9,10 +9,14 @@
   <%= @board.description %>
 </p>
 
+<h2>Розпочати тему:</h2>
 <%= render 'topics/form', var: [ @board, @board.topics.build ] %>
 
 <%= render @board.topics.left_joins(:replies).group('topics.id').order(
           'IFNULL(MAX(replies.created_at), topics.created_at) DESC') %>
+
+<h2>Розпочати нову тему:</h2>
+<%= render 'topics/form', var: [ @board, @board.topics.build ] %>
 
 <hr/>
 <%= link_to 'Всі Дошки', boards_path %>
