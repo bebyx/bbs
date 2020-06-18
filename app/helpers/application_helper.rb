@@ -15,6 +15,7 @@ end
 
 
 class BbsRender < Redcarpet::Render::HTML
+
   def block_quote(quote)
     %(<blockquote style="color: green;margin-left:0;">#{quote.insert(3, ">")}</blockquote>)
   end
@@ -24,8 +25,12 @@ class BbsRender < Redcarpet::Render::HTML
     "<p>#{level + " " + text}</p>"
   end
 
-  def paragraph(text)
-    text = text.gsub(/%%(.+)%%/) {|spoiler| spoiler.tr('%%', '').insert(0, "<span class='spoiler'>").<<"</span>"}
-    %(<p>#{text}</p>)
+  def spoiler(text)
+    text.gsub!(/%%(.+)%%/) do
+      "<span class='spoiler'>#{$1}</span>"
+    end
+    text
   end
+  alias_method :postprocess, :spoiler
+
 end
