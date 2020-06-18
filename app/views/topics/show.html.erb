@@ -1,4 +1,4 @@
-<p>
+<p id="0">
   <strong>Title:</strong>
   <%= @topic.title %>
   | <b>Date:</b> <%= @topic.created_at.strftime('%B %e, %Y') %>
@@ -7,7 +7,6 @@
 </p>
 
 <p>
-  <strong>Message:</strong>
   <%= markdown(@topic.message) %>
 </p>
 
