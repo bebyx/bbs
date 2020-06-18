@@ -4,7 +4,7 @@ module ApplicationHelper
       no_links: true, no_images: true,
       no_styles: true, escape_html: true,
       prettify: true),
-      autolink: false, space_after_headers: true,
+      autolink: false, space_after_headers: false,
       strikethrough: true, underline: true,
       superscript: true, no_intra_emphasis: true,
       tables: false, quote: false,
@@ -17,12 +17,17 @@ end
 class BbsRender < Redcarpet::Render::HTML
 
   def block_quote(quote)
-    %(<blockquote style="color: green;margin-left:0;">#{quote.insert(3, ">")}</blockquote>)
+    %(<blockquote style="color: green;margin-left:0;">#{quote}</blockquote>)
   end
 
   def header(text, level)
-    level = "#" * level
-    "<p>#{level + " " + text}</p>"
+    if (Integer(text) rescue false)
+      level = text
+      "<a href='\##{level}'>\##{text}</a>"
+    else
+      level = "#" * level
+      "<p>#{level + text}</p>"
+    end
   end
 
   def spoiler(text)
