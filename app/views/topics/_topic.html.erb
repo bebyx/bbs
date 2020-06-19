@@ -3,7 +3,12 @@
 <p>
   <strong>Topic:</strong>
   <%= topic.title %> | Date: <%= topic.created_at.strftime('%H:%M — %B %e, %Y') %>
-  | Topic #<%= topic.id %> | Replies: <%= topic.replies.count %>
+  | Topic <a href=""
+           onclick="replyFocus('0',
+           <%= topic.id %>); return false">#<%=
+           topic.id %></a>
+  | <%= link_to 'Replies: ' + topic.replies.count.to_s,
+                board_topic_path(topic.board, topic) + "#1" %>
 </p>
   <%= markdown(topic.message) %>
 

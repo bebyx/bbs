@@ -22,6 +22,10 @@
 <%= link_to 'Всі Дошки', boards_path %>
 
 <script>
+  document.body.innerHTML = document.body.innerHTML.replace(/@\d+/g, function(x) {
+    return '<a href="' + '#' + x.substr(1) + '">' + x + '</a>';
+  });
+
   function replyFocus(id, topic_id) {
     topic_id_read = "t" + topic_id.toString();
     let x = document.getElementById(topic_id_read);
@@ -32,5 +36,5 @@
     }
   x.focus();
 
-}
+  }
 </script>
