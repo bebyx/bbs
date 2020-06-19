@@ -29,11 +29,7 @@
   function replyFocus(id, topic_id) {
     topic_id_read = "t" + topic_id.toString();
     let x = document.getElementById(topic_id_read);
-    if (x.value) {
-      x.value = x.value + "\n\n@" + id + "\n\n"}
-    else {
-      x.value = x.value + "@" + id + "\n\n"
-    }
+    x.value = x.value + "@" + id + " ";
   x.focus();
 
   }

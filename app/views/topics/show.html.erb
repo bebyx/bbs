@@ -3,7 +3,11 @@
   <%= @topic.title %>
   | <b>Date:</b> <%= @topic.created_at.strftime('%B %e, %Y') %>
   | <b>Time:</b> <%= @topic.created_at.strftime('%H:%M') %>
-  | Topic #<%= @topic.id %> | Replies: <%= @topic.replies.count %>
+  | Topic <a href=""
+           onclick="replyFocus('0',
+           <%= @topic.id %>); return false">#<%=
+           @topic.id %></a>
+  | Replies: <%= @topic.replies.count %>
 </p>
 
 <p>
@@ -32,11 +36,7 @@
   function replyFocus(id, topic_id) {
     topic_id_read = "t" + topic_id.toString();
     let x = document.getElementById(topic_id_read);
-    if (x.value) {
-      x.value = x.value + "\n\n@" + id + "\n\n"}
-    else {
-      x.value = x.value + "@" + id + "\n\n"
-    }
+    x.value = x.value + "@" + id + " ";
   x.focus();
 
 }
