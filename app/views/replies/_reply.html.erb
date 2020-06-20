@@ -13,9 +13,8 @@
     <%= markdown(reply.body) %>
 </div>
 
-<img style='display:none;' src onerror='getLinks(<%= reply.topic.id %>, "<%= reply.topic.board.name %>")'>
-
 <% if current_page?(board_path(reply.topic.board.name)) %>
+  <img style='display:none;' src onerror='getLinks(<%= reply.topic.id %>, "<%= reply.topic.board.name %>")'>
   <p>
     <%= link_to 'Show', board_topic_path(reply.topic.board.name, reply.topic) + "##{reply.topic.replies.index(reply) + 1}" %>
   </p>

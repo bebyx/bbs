@@ -31,8 +31,10 @@
 
 <hr/>
 <h2>Add a reply:</h2>
-<%= render 'replies/form', var: [@board, @topic, @topic.replies.build] %>
-
+<button onclick="toggleForm()">Toggle</button><br/>
+<div style="display:block;" id="form-cont">
+  <%= render 'replies/form', var: [@board, @topic, @topic.replies.build] %>
+</div>
 
 <%= link_to 'Edit', edit_board_topic_path(@board.name) %>
 <%= link_to 'Destroy', board_topic_path(@board.name),
@@ -49,7 +51,20 @@
     topic_id_read = "t" + topic_id.toString();
     let x = document.getElementById(topic_id_read);
     x.value = x.value + "@" + id + " ";
-  x.focus();
 
-}
+    let form = document.getElementById("form-cont");
+    if (form.style.display === "none") { form.style.display = "block"};
+    x.focus();
+  }
+
+  document.getElementById("form-cont").style.display = "none";
+  function toggleForm() {
+    let form = document.getElementById("form-cont");
+    if (form.style.display === "none") {
+      form.style.display = "block";
+      document.getElementsByName("reply[body]")[0].focus();
+    } else {
+      form.style.display = "none";
+    }
+  }
 </script>
