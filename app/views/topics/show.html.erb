@@ -1,3 +1,15 @@
+<p>
+  | <b>Board created:</b> <%= @board.created_at.strftime('%H:%M — %B %e, %Y') %>
+</p>
+
+<p align="center">
+  <strong>
+  /<%= @topic.board.name %>/ —
+  <%= @topic.board.description %>
+  </strong>
+</p>
+<hr/>
+<p><%= link_to 'Return', board_path(@topic.board) %></p>
 <p id="0">
   <strong>Title:</strong>
   <%= @topic.title %>

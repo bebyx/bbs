@@ -13,7 +13,7 @@
     <%= markdown(reply.body) %>
 </div>
 
-<img src onerror='getLinks(<%= reply.topic.id %>, "<%= reply.topic.board.name %>")'>
+<img style='display:none;' src onerror='getLinks(<%= reply.topic.id %>, "<%= reply.topic.board.name %>")'>
 
 <% if current_page?(board_path(reply.topic.board.name)) %>
   <p>

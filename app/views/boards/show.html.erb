@@ -1,15 +1,14 @@
 <p>
-  <strong>Name:</strong>
-  <%= @board.name %>
-  | <b>Date:</b> <%= @board.created_at.strftime('%H:%M — %B %e, %Y') %>
+  | <b>Board created:</b> <%= @board.created_at.strftime('%H:%M — %B %e, %Y') %>
 </p>
 
-<p>
-  <strong>Description:</strong>
+<h1 align="center">
+  /<%= @board.name %>/ —
   <%= @board.description %>
-</p>
+</h1>
+<hr/>
 
-<h2>Розпочати тему:</h2>
+<h2>Розпочати нову тему:</h2>
 <%= render 'topics/form', var: [ @board, @board.topics.build ] %>
 
 <%= render @board.topics.left_joins(:replies).group('topics.id').order(
