@@ -9,13 +9,19 @@
 <hr/>
 
 <h2>Розпочати нову тему:</h2>
-<%= render 'topics/form', var: [ @board, @board.topics.build ] %>
+<button onclick="toggleTopicForm(0)">Toggle</button>
+<div style="display:block;" class="topic-form-cont">
+  <%= render 'topics/form', var: [ @board, @board.topics.build ] %>
+</div>
 
 <%= render @board.topics.left_joins(:replies).group('topics.id').order(
           'IFNULL(MAX(replies.created_at), topics.created_at) DESC') %>
 
 <h2>Розпочати нову тему:</h2>
-<%= render 'topics/form', var: [ @board, @board.topics.build ] %>
+<button onclick="toggleTopicForm(1)">Toggle</button>
+<div style="display:block;" class="topic-form-cont">
+  <%= render 'topics/form', var: [ @board, @board.topics.build ] %>
+</div>
 
 <hr/>
 <%= link_to 'Всі Дошки', boards_path %>
@@ -37,7 +43,19 @@
     topic_id_read = "t" + topic_id.toString();
     let x = document.getElementById(topic_id_read);
     x.value = x.value + "@" + id + " ";
-  x.focus();
+    x.focus();
+  }
 
+  for (i = 0; i < document.getElementsByClassName("topic-form-cont").length; i++) {
+    document.getElementsByClassName("topic-form-cont")[i].style.display = "none";
+  }
+  function toggleTopicForm(which) {
+    let form = document.getElementsByClassName("topic-form-cont")[which];
+    if (form.style.display === "none") {
+      form.style.display = "block";
+      document.getElementsByName("topic[message]")[which].focus();
+    } else {
+      form.style.display = "none";
+    }
   }
 </script>

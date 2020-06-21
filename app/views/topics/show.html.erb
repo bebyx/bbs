@@ -31,7 +31,7 @@
 
 <hr/>
 <h2>Add a reply:</h2>
-<button onclick="toggleForm()">Toggle</button><br/>
+<p><button onclick="toggleForm()">Toggle</button><br/></p>
 <div style="display:block;" id="form-cont">
   <%= render 'replies/form', var: [@board, @topic, @topic.replies.build] %>
 </div>
