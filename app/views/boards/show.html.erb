@@ -14,8 +14,7 @@
   <%= render 'topics/form', var: [ @board, @board.topics.build ] %>
 </div>
 
-<%= render @board.topics.left_joins(:replies).group('topics.id').order(
-          'IFNULL(MAX(replies.created_at), topics.created_at) DESC') %>
+<%= render @topics %>
 
 <h2>Розпочати нову тему:</h2>
 <button onclick="toggleTopicForm(1)">Toggle</button>

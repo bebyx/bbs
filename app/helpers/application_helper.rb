@@ -3,7 +3,7 @@ module ApplicationHelper
     raw Redcarpet::Markdown.new(BbsRender.new(
       no_links: true, no_images: true,
       no_styles: true, escape_html: true,
-      prettify: true),
+      prettify: true, hard_wrap: true),
       autolink: false, space_after_headers: true,
       strikethrough: true, underline: true,
       superscript: true, no_intra_emphasis: true,
