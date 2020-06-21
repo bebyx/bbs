@@ -6,5 +6,9 @@ Rails.application.routes.draw do
     end
   end
 
-  root 'welcome#index'
+  get 'rules', to: 'static_pages#rules', as: :rules
+  get 'about', to: 'static_pages#about', as: :about
+  get 'howto', to: 'static_pages#howto', as: :howto
+
+  root 'boards#index'
 end
