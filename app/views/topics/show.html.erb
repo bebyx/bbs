@@ -13,6 +13,7 @@
 <p id="0">
   <strong>Title:</strong>
   <%= @topic.title %>
+  | <b>User: <%= @topic.user %></b>
   | <b>Date:</b> <%= @topic.created_at.strftime('%B %e, %Y') %>
   | <b>Time:</b> <%= @topic.created_at.strftime('%H:%M') %>
   | Topic <a href=""

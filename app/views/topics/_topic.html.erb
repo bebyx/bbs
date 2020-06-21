@@ -10,7 +10,9 @@
 </p>
 <p>
   <strong>Title:</strong>
-  <%= topic.title %> | Date: <%= topic.created_at.strftime('%H:%M — %B %e, %Y') %>
+  <%= topic.title %>
+  | User: <%= topic.user %>
+  | Date: <%= topic.created_at.strftime('%H:%M — %B %e, %Y') %>
 </p>
   <%= markdown(topic.message) %>
 
