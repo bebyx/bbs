@@ -29,14 +29,12 @@
 <script>
   function getLinks(topic_id_pure, board_name) {
     topic_id = "t" + topic_id_pure.toString();
-    document.getElementsByClassName(topic_id)[0].innerHTML =
-                    document.getElementsByClassName(topic_id)[0].innerHTML.replace(/@\d+/g, function(x) {
+    let topic_id_replies = document.getElementsByClassName(topic_id);
+    for (i = 0; i < topic_id_replies.length; i++) {
+      topic_id_replies[i].innerHTML = topic_id_replies[i].innerHTML.replace(/@\d+/g, function(x) {
         return '<a href="' + '/boards/' + board_name + '/topics/' + topic_id_pure + '#' + x.substr(1) + '">' + x + '</a>';
       });
-    document.getElementsByClassName(topic_id)[1].innerHTML =
-                    document.getElementsByClassName(topic_id)[1].innerHTML.replace(/@\d+/g, function(x) {
-        return '<a href="' + '/boards/' + board_name + '/topics/' + topic_id_pure + '#' + x.substr(1) + '">' + x + '</a>';
-      });
+    }
   }
 
   function replyFocus(id, topic_id) {
