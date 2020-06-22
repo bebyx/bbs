@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_21_184455) do
+ActiveRecord::Schema.define(version: 2020_06_22_132506) do
 
   create_table "boards", force: :cascade do |t|
     t.string "name"
@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 2020_06_21_184455) do
     t.integer "topic_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "sage"
     t.index ["topic_id"], name: "index_replies_on_topic_id"
   end
 
@@ -35,6 +36,7 @@ ActiveRecord::Schema.define(version: 2020_06_21_184455) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "board_id", null: false
     t.string "user"
+    t.datetime "bumped_at"
     t.index ["board_id"], name: "index_topics_on_board_id"
   end
 

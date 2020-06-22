@@ -4,6 +4,9 @@
   <strong>User:</strong>
   <%= reply.user %> | <b>Date:</b>
   <%= reply.created_at.strftime('%H:%M — %B %e, %Y') %>
+  <% if (reply.sage == true) %>
+    | <span style="color:red;">Sage</span>
+  <% end %>
   | Reply <a href=""
            onclick="replyFocus(<%= reply.topic.replies.index(reply) + 1 %>,
            <%= reply.topic.id %>); return false"><%=

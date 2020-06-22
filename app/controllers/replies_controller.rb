@@ -4,6 +4,11 @@ class RepliesController < ApplicationController
     @topic = Topic.find(params[:topic_id])
     @reply = @topic.replies.create(reply_params)
 
+    if reply_params[:sage] == "0"
+      flash[:notice] = "===Touched==="
+      @topic.touch(:bumped_at)
+    end
+
     @board = Board.find_by(name: params[:board_name])
     redirect_to board_topic_path(@board.name, @topic)
   end
@@ -36,7 +41,7 @@ class RepliesController < ApplicationController
 
   private
     def reply_params
-      params.require(:reply).permit(:user, :body)
+      params.require(:reply).permit(:user, :body, :sage)
     end
 
 end

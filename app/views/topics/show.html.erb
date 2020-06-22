@@ -1,3 +1,9 @@
+<% flash.each do |type, msg| %>
+  <div>
+    <%= msg %>
+  </div>
+<% end %>
+
 <p>
   | <b>Board created:</b> <%= @board.created_at.strftime('%H:%M — %B %e, %Y') %>
 </p>

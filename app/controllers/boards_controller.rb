@@ -5,8 +5,7 @@ class BoardsController < ApplicationController
 
   def show
     @board = Board.find_by(name: params[:name])
-    @topics = @board.topics.left_joins(:replies).group('topics.id').order(
-              'IFNULL(MAX(replies.created_at), topics.created_at) DESC')
+    @topics = @board.topics.order('IFNULL(bumped_at, created_at) DESC')
   end
 
   def new

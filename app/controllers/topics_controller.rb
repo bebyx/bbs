@@ -13,6 +13,7 @@ class TopicsController < ApplicationController
   def create
     @board = Board.find_by(name: params[:board_name])
     @topic = @board.topics.create(topic_params)
+    
     redirect_to board_path(@board)
   end
 

@@ -7,6 +7,12 @@
    <%= form.label :body %><br>
    <%= form.text_area :body, cols: 40, rows: 10, id: "t" + var[1].id.to_s %>
  </p>
+
+ <p>
+   <%= form.label :sage %><br>
+   <%= form.check_box :sage %>
+ </p>
+
  <p>
    <%= form.submit %>
  </p>
