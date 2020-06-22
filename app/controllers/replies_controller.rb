@@ -4,8 +4,7 @@ class RepliesController < ApplicationController
     @topic = Topic.find(params[:topic_id])
     @reply = @topic.replies.create(reply_params)
 
-    if reply_params[:sage] == "0"
-      flash[:notice] = "===Touched==="
+    if (@topic.replies.count <= 100 && reply_params[:sage] == "0")
       @topic.touch(:bumped_at)
     end
 
